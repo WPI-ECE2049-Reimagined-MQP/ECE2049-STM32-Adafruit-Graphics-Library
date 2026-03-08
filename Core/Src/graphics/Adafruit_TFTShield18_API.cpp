@@ -1,10 +1,18 @@
+/**
+ * @file Adafruit_TFTShield18_API.cpp
+ * @author Kyle Schmottlach (kjschmottlach@wpi.edu)
+ * @brief Wrapper class for the Adafruit TFT Shield 1.8" that provides a C API for the C++ class defined in Adafruit_TFTShield18.h. This is used to allow 
+ *        the TFT shield to be used in C code. This class is intended to be used as a singleton, containing all functionality for initializing and
+ *        controlling the TFT seesaw chip
+ * @version 1.0
+ * @date 2026-03-07
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
+
 #include "Adafruit_TFTShield18_API.h"
 #include "Adafruit_TFTShield18.h"
-
-/*!
-* Wrapper class for the Adafruit TFT Shield 1.8" that provides a C API for the C++ class defined in 
-* Adafruit_TFTShield18.h. This is used to allow the TFT shield to be used in C code
-*/
 
 struct TFTShield18_Handle {
     Adafruit_TFTShield18 instance;

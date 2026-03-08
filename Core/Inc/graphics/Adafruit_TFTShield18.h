@@ -1,3 +1,8 @@
+/*
+* Originally written by Adafruit Industries for general-purpose Arduino development.
+* Adapted for STM32 for ECE 2049 by Kyle Schmottlach and Shannon Miranda '26
+*/
+
 #ifndef _TFT_SHIELD_18_H
 #define _TFT_SHIELD_18_H
 

@@ -1,3 +1,7 @@
+/*
+* Originally written by Adafruit Industries for general-purpose Arduino development.
+* Adapted for STM32 for ECE 2049 by Kyle Schmottlach and Shannon Miranda '26
+*/
 #include "Adafruit_TFTShield18.h"
 
 Adafruit_TFTShield18::Adafruit_TFTShield18() : Adafruit_seesaw() {}

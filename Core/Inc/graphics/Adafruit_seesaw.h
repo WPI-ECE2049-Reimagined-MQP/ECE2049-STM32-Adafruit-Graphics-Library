@@ -12,7 +12,8 @@
  * please support Adafruit and open-source hardware by purchasing
  * products from Adafruit!
  *
- * Written by Dean Miller for Adafruit Industries.
+ * Written by Dean Miller for Adafruit Industries. Adapted for STM32 
+ * for ECE2049 by Kyle Schmottlach and Shannon Miranda '26
  *
  * BSD license, all text here must be included in any redistribution.
  *
@@ -25,10 +26,6 @@
 #include "Print.h"
 #include "stm32h5xx_hal.h"
 #include <cstddef>
-
-// #include "Adafruit_I2CDevice.h"
-// #include <Arduino.h>
-// #include <Wire.h>
 
 /*=========================================================================
     I2C ADDRESS/BITS

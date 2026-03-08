@@ -1,3 +1,7 @@
+/*
+This file has been adapted from the Adafruit GFX Library for STM32 for ECE 2049 by Kyle Schmottlach and Shannon Miranda '26.
+*/
+
 // Font structures for newer Adafruit_GFX (1.1 and later).
 // Example fonts are included in 'Fonts' directory.
 // To use a font in your Arduino sketch, #include the corresponding .h

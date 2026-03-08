@@ -1,3 +1,17 @@
+/**
+ * @file Adafruit_ST7735_API.cpp
+ * @author Kyle Schmottlach (kjschmottlach@wpi.edu)
+ * @brief This is the source code implementing the API defined for the Adafruit ST7735 TFT display driver chip. This API is declared in Adafruit_ST7735_API.h 
+ *        and is intended to be used as a C-style wrapper around the C++ Adafruit_ST7735 class, allowing for easier integration with C code. The functions in 
+ *        this file simply call the corresponding methods of the Adafruit_ST7735 class instance, which is stored in a global handle struct. This class is
+ *        intended to be used with the 1.8" TFT shield variant used within the ECE 2049 course, and is entirely self-contained
+ * @version 1.0
+ * @date 2026-03-07
+ * 
+ * @copyright Copyright (c) 2026
+ * 
+ */
+
 #ifndef ADAFRUIT_ST7735_API_H
 #define ADAFRUIT_ST7735_API_H
 

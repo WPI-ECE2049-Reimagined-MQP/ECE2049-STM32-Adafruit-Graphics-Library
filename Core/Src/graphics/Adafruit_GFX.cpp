@@ -29,16 +29,13 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
+
+ Adapted for STM32 for ECE 2049 by Kyle Schmottlach and Shannon Miranda '26
  */
 
 #include "Adafruit_GFX.h"
 #include "glcdfont.c"
 #include <string.h>
-// #ifdef __AVR__
-// #include <avr/pgmspace.h>
-// #elif defined(ESP8266) || defined(ESP32)
-// #include <pgmspace.h>
-// #endif
 
 inline GFXglyph *pgm_read_glyph_ptr(const GFXfont *gfxFont, uint8_t c) {
   // expression in __AVR__ section may generate "dereferencing type-punned

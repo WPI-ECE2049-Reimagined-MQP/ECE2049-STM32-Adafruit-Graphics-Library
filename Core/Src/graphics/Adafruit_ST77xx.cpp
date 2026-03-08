@@ -18,7 +18,7 @@
   please support Adafruit and open-source hardware by purchasing
   products from Adafruit!
 
-  Written by Limor Fried/Ladyada for Adafruit Industries.
+  Written by Limor Fried/Ladyada for Adafruit Industries. Adapted for STM32 for ECE 2049 by Kyle Schmottlach and Shannon Miranda '26
   MIT license, all text above must be included in any redistribution
  **************************************************************************/
 

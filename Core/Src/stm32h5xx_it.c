@@ -309,10 +309,7 @@ void HAL_SPI_TxCpltCallback(SPI_HandleTypeDef *hspi) {
   if (hspi->Instance == SPI2) {
     // Handle the completion of SPI transmission here
     // For example, you can set a flag or call another function
-
     spiTxDone = true;
-
-    // printf("SPI transmission completed!\n\r");
   }
 }
 

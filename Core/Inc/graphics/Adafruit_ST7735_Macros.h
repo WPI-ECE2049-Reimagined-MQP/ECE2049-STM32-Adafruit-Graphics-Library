@@ -1,3 +1,7 @@
+/*
+Separate Adafruit ST7735 macros into their own file so that user code files in C can access them without importing C++ class defitions
+*/
+
 #ifndef ADAFRUIT_ST7735_MACROS_H
 #define ADAFRUIT_ST7735_MACROS_H
 

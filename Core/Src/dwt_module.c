@@ -1,3 +1,11 @@
+/**
+* Functions for using the DWT (Data Watchpoint and Trace) unit to create accurate delays.
+* Useful for applications requiring stricter time requirements and accuracy than HAL_Delay
+* 
+* Functions adapted from https://deepbluembedded.com/stm32-delay-microsecond-millisecond-utility-dwt-delay-timer-delay/
+* by Deep Blue Embedded, with modifications for use in ECE 2049 by Kyle Schmottlach and Shannon Miranda '26
+*/
+
 #include "dwt_module.h"
 
 bool DWT_Init() {
@@ -5,6 +13,7 @@ bool DWT_Init() {
     DWT->CYCCNT = 0; // Reset the cycle counter
     DWT->CTRL |= DWT_CTRL_CYCCNTENA_Msk; // Enable the cycle counter
     
+    // Wait a few clock cycles to let the counter increase. Used to check whether initialization was successful
     __asm volatile ("nop");
     __asm volatile ("nop");
     __asm volatile ("nop");
@@ -15,15 +24,3 @@ bool DWT_Init() {
 bool DWT_CheckInitialized() {
     return (CoreDebug->DEMCR & CoreDebug_DEMCR_TRCENA_Msk) && (DWT->CTRL & DWT_CTRL_CYCCNTENA_Msk);
 }
-
-// void DWT_Delay_us(volatile uint32_t us) {
-//     uint32_t startTick = DWT->CYCCNT;
-//     uint32_t delayTicks = us * (HAL_RCC_GetHCLKFreq() / 1000000);
-//     while ((uint32_t)(DWT->CYCCNT - startTick) < delayTicks);
-// }
-
-// void DWT_Delay_ms(volatile uint32_t ms) {
-//     uint32_t startTick = DWT->CYCCNT;
-//     uint32_t delayTicks = ms * (HAL_RCC_GetHCLKFreq() / 1000);
-//     while ((uint32_t)(DWT->CYCCNT - startTick) < delayTicks);
-// }

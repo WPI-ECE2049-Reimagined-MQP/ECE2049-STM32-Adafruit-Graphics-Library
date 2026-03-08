@@ -27,6 +27,8 @@
  * Written by Limor "ladyada" Fried for Adafruit Industries,
  * with contributions from the open source community.
  *
+ * Adapted for STM32 for ECE2049 by Kyle Schmottlach and Shannon Miranda '26
+ *
  * @section license License
  *
  * BSD license, all text here must be included in any redistribution.

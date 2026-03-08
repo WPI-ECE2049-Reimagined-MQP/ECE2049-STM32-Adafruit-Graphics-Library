@@ -1,11 +1,11 @@
-#ifndef ADAFRUIT_TFTSHIELD18_MACROS_H
-#define ADAFRUIT_TFTSHIELD18_MACROS_H
-
 /**
 * Separate Adafruit TFT 18" shield macros into their own file so that user code files in C can 
 * and the C++ library files can include the macros without causing issues with C++ class definitions
 * in C source code
 */
+
+#ifndef ADAFRUIT_TFTSHIELD18_MACROS_H
+#define ADAFRUIT_TFTSHIELD18_MACROS_H
 
 #define TFTSHIELD_ADDR 0x2E
 #define TFTSHIELD_RESET_PIN 3
