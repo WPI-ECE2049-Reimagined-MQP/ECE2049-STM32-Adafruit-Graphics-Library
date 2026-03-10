@@ -21,11 +21,21 @@ struct ST7735_Handle {
 
 ST7735_Handle *st7735_handle;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+volatile bool spiTxDone = false;
+
+#ifdef __cplusplus
+}
+#endif //__cplusplus
+
 //--------------------------------------------------------------------------------------------
 // Adafruit_ST7735.cpp function definitions
 
-void Display_create(SPI_HandleTypeDef *spi_handle, int16_t cs, GPIO_TypeDef *cs_port, int16_t dc, GPIO_TypeDef *dc_port, volatile bool *spiTxDone) {
-    static ST7735_Handle st7735 = ST7735_Handle{Adafruit_ST7735(spi_handle, cs, cs_port, dc, dc_port, -1, spiTxDone)};
+void Display_create(SPI_HandleTypeDef *spi_handle, int16_t cs, GPIO_TypeDef *cs_port, int16_t dc, GPIO_TypeDef *dc_port) {
+    static ST7735_Handle st7735 = ST7735_Handle{Adafruit_ST7735(spi_handle, cs, cs_port, dc, dc_port, -1, &spiTxDone)};
     st7735_handle = &st7735;
 }
 

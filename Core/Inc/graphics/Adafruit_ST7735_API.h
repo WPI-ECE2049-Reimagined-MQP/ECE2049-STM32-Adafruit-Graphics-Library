@@ -38,7 +38,7 @@ typedef struct ST7735_Handle ST7735_Handle;
  * 
  * @param spi_handle The handle for the STM32 hardware spi instance that has been set up for the TFT display
  */
-void Display_create(SPI_HandleTypeDef *spi_handle, int16_t cs, GPIO_TypeDef *cs_port, int16_t dc, GPIO_TypeDef *dc_port, volatile bool *spiTxDone);
+void Display_create(SPI_HandleTypeDef *spi_handle, int16_t cs, GPIO_TypeDef *cs_port, int16_t dc, GPIO_TypeDef *dc_port);
 
 /**
  * @brief Function used to initialize the display using the given options

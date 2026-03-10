@@ -57,8 +57,6 @@ DMA_HandleTypeDef handle_GPDMA1_Channel7;
 
 /* USER CODE BEGIN PV */
 
-volatile bool spiTxDone = false;
-
 extern uint8_t test_bits[];
 
 /* USER CODE END PV */
@@ -157,7 +155,7 @@ int main(void)
 
   DWT_delayMs(100);
 
-  Display_create(&hspi2, DISP_CS_Pin, DISP_CS_GPIO_Port, DISP_DCX_SEL_Pin, DISP_DCX_SEL_GPIO_Port, &spiTxDone);
+  Display_create(&hspi2, DISP_CS_Pin, DISP_CS_GPIO_Port, DISP_DCX_SEL_Pin, DISP_DCX_SEL_GPIO_Port);
 
   Display_init(INITR_BLACKTAB);
 
@@ -277,9 +275,9 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLL1_SOURCE_CSI;
   RCC_OscInitStruct.PLL.PLLM = 1;
-  RCC_OscInitStruct.PLL.PLLN = 37;
+  RCC_OscInitStruct.PLL.PLLN = 45;
   RCC_OscInitStruct.PLL.PLLP = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 5;
+  RCC_OscInitStruct.PLL.PLLQ = 6;
   RCC_OscInitStruct.PLL.PLLR = 2;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1_VCIRANGE_2;
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1_VCORANGE_WIDE;
@@ -406,12 +404,8 @@ static void MX_ICACHE_Init(void)
 
   /* USER CODE END ICACHE_Init 1 */
 
-  /** Enable instruction cache in 1-way (direct mapped cache)
+  /** Enable instruction cache (default 2-ways set associative cache)
   */
-  if (HAL_ICACHE_ConfigAssociativityMode(ICACHE_1WAY) != HAL_OK)
-  {
-    Error_Handler();
-  }
   if (HAL_ICACHE_Enable() != HAL_OK)
   {
     Error_Handler();
