@@ -110,3 +110,41 @@ To install and set up this library into a custom project, the following steps sh
     - Call `Display_create(&hspi2, DISP_CS_Pin, DISP_CS_GPIO_Port, DISP_DCX_SEL_Pin, DISP_DCX_SEL_GPIO_Port);` to create the ST7735 driver instance on the NUCLEO board
     - Call `Display_init(INITR_BLACKTAB);` to initialize the ST7735 chip
     - Finally, call `DWT_delayMs(100);` one more time to ensure that initialization completes
+13. Configure [CMakeLists.txt](CMakeLists.txt) to enable C++ for embedded development and compile the graphics library
+    - Find the section labeled `# Setup compiler settings` and add the following lines after the lines calling `set(...)`
+
+        ```
+        set(CMAKE_CXX_STANDARD 17)
+        set(CMAKE_CXX_STANDARD_REQUIRED ON)
+        set(CMAKE_CXX_EXTENSIONS OFF)
+        ```
+        This sets the standards that CMake uses to compile C++, which is a requirement to use this library
+    - Find the section labeled `# Core project settings` and change the line with `project(${CMAKE_PROJECT_NAME})` to `project(${CMAKE_PROJECT_NAME} C CXX ASM)` to allow C++ to be enabled within the project
+    - Find the section labeled `# Enable CMake support for ASM and C languages` and change the `enable_language(...)` line to `enable_language(C CXX ASM)` to enable C++
+    - In between the sections labeled `# Create an executable object type` and `# Add STM32CubeMX generated sources`, add the following lines to enable C++ linker support:
+        ```
+        # CUSTOM: Enable C++ linkage support
+        set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+        ```
+    - In between the sections labeled `# Add STM32CubeMX generated sources` and `# Link directories setup`, add the following lines to correctly set up C++ for embedded development:
+        ```
+        # CUSTOM: C++ compile options setup
+        target_compile_options(${CMAKE_PROJECT_NAME} PRIVATE
+            $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions -fno-rtti -fno-use-cxa-atexit>
+        )
+        ```
+    - Finally, add the following lines in the `target_sources(${CMAKE_PROJECT_NAME} PRIVATE ...)` call under the section labeled `# Add sources to executable` to compile the library files:
+        ```
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Adafruit_GFX.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Adafruit_SPITFT.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Adafruit_ST77xx.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Adafruit_ST7735.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Adafruit_ST7735_API.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Print.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Adafruit_seesaw.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Adafruit_TFTShield18.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/graphics/Adafruit_TFTShield18_API.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Core/Src/dwt_module.c
+        ```
+
+If all of these steps are followed correctly and in order, the project should compile just fine! If not, check to make sure that the steps were followed completely, especially in the CMakeLists.txt setup step and the hardware configuration via the STM32CubeMX program. 
