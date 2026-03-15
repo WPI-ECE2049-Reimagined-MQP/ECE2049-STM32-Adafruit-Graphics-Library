@@ -6,6 +6,10 @@ This repository contains the STM32 project for testing an STM32 port of the [Ada
 
 For installation instructions, see the [INSTALL.md](INSTALL.md) file.
 
+When altering the implementation or documentation of the API functions, the following command should be run to regenerate the doxygen documentation. This will automatically be reflected in the online version of the documentation upon commit and push. This command should be run from the project root and requires Doxygen to be installed. The latest version can be found at this link: https://www.doxygen.nl/download.html
+
+`doxygen ./Doxyfile`
+
 ## API Reference
 
-The API reference manual for the exposed C to C++ API can be found at this link: https://wpi-ece2049-reimagined-mqp.github.io/ECE2049-STM32-Adafruit-Graphics-Library/, which is updated with every push to this repository. You can also read an offline version in the generated Doxygen documentation pdf, found at the [Docs/latex/refman.pdf](Docs/latex/refman.pdf) file. The documentation can also be viewed by cloning the repository and opening the [index.html](Docs/html/index.html) file in the Docs/html folder in a web browser for an offline, web-based view.
+The API reference manual for the exposed C to C++ API for the display functions can be found at this link: https://wpi-ece2049-reimagined-mqp.github.io/ECE2049-STM32-Adafruit-Graphics-Library/, which is updated with every push to this repository. You can also read an offline version in the generated Doxygen documentation pdf, found at the [Docs/latex/refman.pdf](Docs/latex/refman.pdf) file. The documentation can also be viewed by cloning the repository and opening the [index.html](Docs/html/index.html) file in the Docs/html folder in a web browser for an offline, web-based view. Two different systems, and therefore APIs, are described in this documentation. Graphics functions are described in the Adafruit_ST7735_API.h file while button and backlight functions are described in the Adafruit_TFTShield18_API.h file.
